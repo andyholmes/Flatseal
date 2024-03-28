@@ -29,13 +29,32 @@
     ],
     "modules": [
         {
-            "name": "flatseal",
+            "name": "jasmine-gjs",
             "buildsystem": "meson",
+            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "git",
-                    "path": ".",
-                    "branch": "HEAD"
+                    "url": "https://github.com/ptomato/jasmine-gjs.git",
+                    "commit": "2c1e6ff3f9006c50d2ec2b99eef3074748c8ff82"
+                }
+            ]
+        },
+        {
+            "name": "flatseal",
+            "buildsystem": "meson",
+            "run-tests": true,
+            "build-options": {
+                "test-args": [
+                    "--socket=x11",
+                    "--share=network",
+                    "--socket=session-bus"
+                ]
+            },
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "./"
                 }
             ]
         }
